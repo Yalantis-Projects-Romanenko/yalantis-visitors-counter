@@ -24,7 +24,11 @@ var upgrader = websocket.Upgrader{
 }
 
 func main() {
-	logging, _ := zap.NewProduction()
+	// setup logging
+	logging, err := zap.NewProduction()
+	if err != nil{
+		logger.Fatalf("failed to init logging %v", err)
+	}
 	logger = logging.Sugar()
 
 	router := mux.NewRouter()
