@@ -1,0 +1,49 @@
+<html>
+<head>
+</head>
+<body>
+<h1 class="center" id="main_text">Visitors:<span id="visitors">{{.Visitors}}</span></h1>
+
+<style>
+    #main_text {
+        color: #ece4d5;
+        font-family: Courier;
+        font-size: 4em;
+    }
+
+    .center {
+        text-align: center;
+        position: absolute;
+        width: 100px;
+        height: 50px;
+        top: 50%;
+        left: 50%;
+        margin-left: -3em; /* margin is -0.5 * dimension */
+        margin-top: -25px;
+    }
+
+    body {
+        background-color: #212c6d;
+    }
+</style>
+
+<script type="text/javascript">
+    let visitorsElement = document.getElementById("visitors");
+
+    // 2
+    let host = "ws://" + location.host + "/ws";
+    console.log("connecting", host);
+    let exampleSocket = new WebSocket(host);
+
+    // 3
+    let update = function () {
+        exampleSocket.onmessage = function (event) {
+            console.log(event)
+            visitorsElement.textContent = event.data.toString();
+        }
+    };
+
+    window.setTimeout(update);
+</script>
+</body>
+</html>
