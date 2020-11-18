@@ -1,7 +1,7 @@
 ## Visitors count test project
 This service uses websockets to notify all clients about visitors number update  
-Before starting the service go version >= 1.11 should be installed  
-Service work directory should be the root directory of the project because of `static` dir that stores static content  
+Before starting the service be sure that go version >= 1.11 
+Service workdir should be the root directory of the project because of `static` dir that stores static content  
 To get project dependencies run:  
 ```
 go mod download
